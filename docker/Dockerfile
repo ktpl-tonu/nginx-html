@@ -15,7 +15,8 @@ COPY ./docker/html/* /var/www/html/
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./docker/files/docker-entrypoint.sh /
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
 EXPOSE 80
 
