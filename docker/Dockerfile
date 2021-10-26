@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
 COPY ./docker/html/* /usr/share/html/
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 
+RUN mkdir -p /var/log/app_engine
 RUN sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
 
 CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
