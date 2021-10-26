@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
     && export LANG=en_US.UTF-8 \
     && LC_ALL=en_US.UTF-8
 
-COPY html/* /usr/share/html/
-COPY ./files/supervisord.conf /etc/supervisor/supervisord.conf
+COPY ./docker/html/* /usr/share/html/
+COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 
 RUN sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
 
