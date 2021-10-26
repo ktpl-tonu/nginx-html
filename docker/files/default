@@ -1,0 +1,39 @@
+upstream fastcgi_backend {
+    server  127.0.0.1:9000;
+}
+
+server {
+	listen 80 default_server reuseport;
+
+	server_name _;
+
+	set $my_https "off";
+	set $my_ssl "off";
+	set $my_port "80";
+	
+	
+	if ($http_x_forwarded_proto = "https") {
+	set $my_https "on";
+	set $my_ssl "on";
+	set $my_port "443";
+	}
+
+	root /var/www/html;
+  
+  location / {
+    try_files $uri $uri/ =404;
+    }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass fastcgi_backend;
+  }
+
+  location ~ /\.ht {
+    deny all;
+  }
+ 
+  access_log /var/log/nginx/www-magento-access.log;
+  error_log  /var/log/nginx/www-magento-error.log notice;
+
+}
