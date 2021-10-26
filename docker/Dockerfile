@@ -38,4 +38,4 @@ EXPOSE 9000
 
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx", "-g", "daemon off;" "/usr/sbin/php-fpm7.3"]
+CMD ["nginx", "-g", "daemon off;"]
