@@ -27,6 +27,7 @@ COPY ./docker/files/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./docker/files/default /etc/nginx/sites-available/default
 COPY ./docker/files/docker-entrypoint.sh /
+COPY ./docker/files/wrapper_script.sh /
 
 
 
@@ -38,4 +39,5 @@ EXPOSE 9000
 
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
+CMD ./wrapper_script.sh
