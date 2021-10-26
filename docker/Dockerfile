@@ -34,7 +34,8 @@ COPY ./docker/files/docker-entrypoint.sh /
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
 EXPOSE 80
+EXPOSE 9000
 
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;" "/usr/sbin/php-fpm7.3"]
