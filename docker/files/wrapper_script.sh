@@ -1,5 +1,5 @@
 # Start the first process
-sudo -u www-data ./usr/sbin/php-fpm7.3 -D
+php-fpm -D
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start PHP-FPM: $status"
@@ -7,7 +7,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-.//usr/sbin/nginx -g "daemon off;"
+./usr/sbin/nginx -g "daemon off;"
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start Nginx: $status"
