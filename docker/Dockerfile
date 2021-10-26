@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
     && ln -sf /dev/stderr /var/log/nginx/www-magento-error.log \
     && ln -sf /dev/stdout /var/log/php-fpm-access.log \
     && ln -sf /dev/stderr /var/log/php-fpm-errors.log \
-    && sed -i '/error_log/s/^/;/g' /etc/php/7.3/fpm/php-fpm.conf
+    && sed -i '/error_log/d' /etc/php/7.3/fpm/php-fpm.conf
 
 
 COPY ./docker/html/* /var/www/html/
