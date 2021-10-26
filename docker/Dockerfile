@@ -29,10 +29,11 @@ COPY ./docker/files/default /etc/nginx/sites-available/default
 COPY ./docker/files/docker-entrypoint.sh /
 COPY ./docker/files/wrapper_script.sh /
 
+RUN chmod +x /wrapper_script.sh
 
 
 #ENTRYPOINT ["/docker-entrypoint.sh"]
-ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+#ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
 EXPOSE 80
 EXPOSE 9000
