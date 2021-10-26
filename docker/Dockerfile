@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
 # forward request and error logs to docker log collector
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
-    && ln -sf /var/log/nginx/www-magento-access.log \
+    && ln -sf /dev/stdout /var/log/nginx/www-magento-access.log \
     && ln -sf /var/log/nginx/www-magento-error.log \
-    && ln -sf /var/log/php-fpm.log
+    && ln -sf /dev/stdout /var/log/php-fpm.log
 
 
 COPY ./docker/html/* /var/www/html/
