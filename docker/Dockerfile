@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
     && export LANG=en_US.UTF-8 \
     && LC_ALL=en_US.UTF-8
 
-COPY ./docker/html/* /usr/share/html/
+COPY ./docker/html/* /var/www/html/
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 
 RUN mkdir -p /var/log/app_engine
