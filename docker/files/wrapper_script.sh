@@ -1,10 +1,10 @@
 # Start the first process
-php-fpm -D
-status=$?
-if [ $status -ne 0 ]; then
-  echo "Failed to start PHP-FPM: $status"
-  exit $status
-fi
+#php-fpm -D
+#status=$?
+#if [ $status -ne 0 ]; then
+#  echo "Failed to start PHP-FPM: $status"
+#  exit $status
+#fi
 
 # Start the second process
 ./usr/sbin/nginx -g "daemon off;"
