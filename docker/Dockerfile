@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx s
 
 COPY ./docker/html/* /var/www/html/
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
+COPY ./docker/files/docker-entrypoint.sh /
 
-COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 80
