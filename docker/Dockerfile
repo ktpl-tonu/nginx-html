@@ -9,11 +9,17 @@ RUN apt-get update && apt-get install -y language-pack-en-base software-properti
 RUN apt-get update && apt-get install -y curl wget language-pack-en-base nginx supervisor rsyslog sudo --no-install-recommends \
     && locale-gen en_US.UTF-8 \
     && export LANG=en_US.UTF-8 \
-    && LC_ALL=en_US.UTF-8
+    && LC_ALL=en_US.UTF-8 \
+# forward request and error logs to docker log collector
+    && ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
 
 COPY ./docker/html/* /var/www/html/
 COPY ./docker/files/supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./docker/files/docker-entrypoint.sh /
+
+
 
 #ENTRYPOINT ["/docker-entrypoint.sh"]
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
