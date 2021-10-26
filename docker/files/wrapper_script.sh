@@ -1,8 +1,8 @@
 # Start the first process
-./usr/sbin/php-fpm7.3 -D
+sudo -u www-data ./usr/sbin/php-fpm7.3 -D
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to PHP-FPM: $status"
+  echo "Failed to start PHP-FPM: $status"
   exit $status
 fi
 
