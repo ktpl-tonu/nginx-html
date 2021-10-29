@@ -40,5 +40,5 @@ EXPOSE 9000
 
 STOPSIGNAL SIGQUIT
 
-#CMD ["nginx", "-g", "daemon off;"]
-CMD ./wrapper_script.sh
+CMD ["nginx", "-g", "daemon off;"]
+#CMD ./wrapper_script.sh
